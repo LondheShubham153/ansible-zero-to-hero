@@ -14,7 +14,10 @@ Before installing Ansible, it's essential to update your package list to ensure 
 ```
   sudo yum update -y
 ```
-
+####  Optional: Install Git and Python if needed
+```
+  sudo apt install git python-pip -y
+```
 ### 2. Install Ansible
 
 - **On Debian/Ubuntu**:
@@ -51,3 +54,9 @@ After the installation is complete, verify it by checking the version of Ansible
   python version = 3.8.10 (default, May  3 2021, 08:55:58) [GCC 10.2.1 20210110]
 ```
 ---
+
+
+For more detailed installation instructions, please refer to the official Ansible documentation:
+
+[Ansible Community Documentation](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
+
