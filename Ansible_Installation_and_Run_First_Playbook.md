@@ -40,7 +40,7 @@ After the installation is complete, verify it by checking the version of Ansible
   ansible --version
 ```
 
-### You should see output similar to
+### 4. You should see output similar to
 
 ```
   ansible [core 2.14.3]
@@ -50,3 +50,4 @@ After the installation is complete, verify it by checking the version of Ansible
   executable location = /usr/bin/ansible
   python version = 3.8.10 (default, May  3 2021, 08:55:58) [GCC 10.2.1 20210110]
 ```
+---
