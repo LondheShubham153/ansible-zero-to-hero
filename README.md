@@ -1,6 +1,6 @@
 # 🚀 Ansible Zero to Hero
 
-![Ansible Logo](https://www.ansible.com/hubfs/Ansible-Automates-Logo-black-2.png)  
+![Ansible Logo](https://github.com/ansible/logos/blob/main/community-usage/correct-use-white.png)  
 *A comprehensive guide to mastering Ansible for DevOps Engineers*
 
 ---
