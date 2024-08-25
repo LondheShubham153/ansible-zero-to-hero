@@ -101,6 +101,24 @@ After the installation is complete, verify it by checking the version of Ansible
  ### 5. Write an Ansible Playbook to Install NGINX
 
  - **Create the Playbook File**:
+
+```
+  -
+     name: This playbook will install nginx
+     hosts: servers
+     become: yes
+     tasks:
+       - name: install nginx
+         apt: 
+           name: nginx
+           state: latest
+       - name: start nginx
+           service:
+           name: nginx
+           state: started
+           enabled: yes
+```
+
  - **Write the Playbook**:
 
  ### 6. Run the Ansible Playbook
@@ -110,14 +128,14 @@ After the installation is complete, verify it by checking the version of Ansible
  ### 7. Verify the Set Up
 
  - **Check NGINX installation on Slave Servers**:
-   Open your web browser and navigate to the public IP of bothe slave servers.
+   Open your web browser and navigate to the public IP of both slave servers.
 
 ```
   http://54.234.56.78:80
   http://54.123.45.67:80
 ```
 
-- **Note:- You should see the default NGINX welcome page*
+- **Note:- You should see the default NGINX welcome page**
 
 
 
