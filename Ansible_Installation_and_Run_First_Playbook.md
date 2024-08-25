@@ -94,10 +94,27 @@ After the installation is complete, verify it by checking the version of Ansible
  ### 4. Set Up Ansible Inventory
 
  - **Edit Inventory File**:
-   Create an inventory file (/etc/ansible/hosts) or create your own in your home directory (~/ansible_hosts).
+  The Ansible hosts file **(/etc/ansible/hosts)** is where you define your inventory of servers.
 
- - **Add the following Server Configuration**:  
+- **Open the hosts file**:
 
+```
+  sudo nano /etc/ansible/hosts
+```
+
+- **Add your servers under a specific group**:
+
+```
+  [servers]
+  slave_server1 ansible_host=54.234.56.78
+  slave_server2 ansible_host=54.123.45.67
+
+  [all:vars]
+  ansible_python_interpreter=/usr/bin/python3
+  ansible_user=ubuntu
+  ansible_ssh_private_key_file=/home/ubuntu/keys/master-key-pair.pem
+```
+ 
  ### 5. Write an Ansible Playbook to Install NGINX
 
  - **Create the Playbook File**:
