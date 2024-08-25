@@ -103,17 +103,17 @@ After the installation is complete, verify it by checking the version of Ansible
  - **Create the Playbook File**:
 
 ```
-  -
-     name: This playbook will install nginx
+  ---
+  -  name: This playbook will install nginx
      hosts: servers
-     become: yes
+     become: yes  # to use sudo
      tasks:
        - name: install nginx
          apt: 
            name: nginx
            state: latest
-       - name: start nginx
-           service:
+       - name: start and enable nginx service
+         service:
            name: nginx
            state: started
            enabled: yes
