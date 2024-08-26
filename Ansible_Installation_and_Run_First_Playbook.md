@@ -52,14 +52,14 @@ After the installation is complete, verify it by checking the version of Ansible
 ```
 ---
 
-## Ansible Master-Slave Architecture Implementation!
+## Ansible Controller-Managed-Nodes/Master-Slave Architecture Implementation!
 
 ### 1. Configure Ansible & Set Up AWS Environment
   Create thee EC2 instances on AWS cloud. Ensure you have an SSH key pair to access them, assign a security group that allows SSH (port 22) and HTTP (port 80). </br>
 
-- **Master Server**: This will be the Ansible controller. </br>
-- **Slave Server 1**: This will be the first target server. </br>
-- **Slave Server 2**: This will be the second target server. </br>
+- **Controller Node**: The machine whereAnsible is installed and from where tasks are executed.</br>
+- **Managed Node-1**: The machines that the controller manages and configures. This will be the first target node.</br>
+- **Slave Server 2**: This will be the second target node.</br>
 - **Configure Security Groups**: Make sure the security groups for the slave servers allow traffic from the master server, especially on SSH (port 22) and HTTP (port 80). </br>
 
 ### 2. Install and Configure Ansible on the Master Server
@@ -83,13 +83,35 @@ After the installation is complete, verify it by checking the version of Ansible
   sudo add-apt-repository --yes --update ppa:ansible/ansible
   sudo apt install ansible -y
 ```
-### 3. Configure SSH Access to Slave Servers
+- **Verify Installation**:
 
-- **Copy SSH Keys to Slaves**:
-  Copy the SSH key from the master to both slave servers.
+```
+  ansible --version
+```
+
+### 3. Set Up SSH Access to Managed Nodes
+The controller need SSH access to the managed nodes, to set this up.
+
+- **Henerate an SSH key pair on the controller**:
+
+```
+  ssh-keygen -t rsa
+```
+
+- **Copy the public key to each managed node**:
+  Copy the public SSH key from the controller(master) to both managed nodes(slave).
+
+```
+  ssh-copy-id user@managed-node-ip
+```
 
  - **Test SSH Connectivity**:
-   Ensure you can SSH into both slave servers from the master without needing a password.
+   Ensure you can SSH into both managed node from the controller without needing a password.
+
+```
+  ssh user@managed-node-ip #or
+  ansible all -m ping
+```
 
  ### 4. Set Up Ansible Inventory
 
