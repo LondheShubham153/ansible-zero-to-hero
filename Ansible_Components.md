@@ -93,6 +93,8 @@ ansible-playbook -i inventory.ini deploy.yml --limit servers
 ```
 This command will run the deploy.yml playbook for the servers group listed in the inventory.ini file.</br>
 
+---
+
 - **Dynamic Inventory**:
 Used in dynamic environments like cloud providers where hosts can change frequently. Ansible can fetch the list of hosts dynamically using scripts or plugins.</br>
 An inventory that is generated dynamically at runtime using scripts or APIs. Commonly used for cloud environments (e.g., AWS, Azure, & GCP) where the list of hosts can change frequently.</br>
