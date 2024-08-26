@@ -52,14 +52,14 @@ After the installation is complete, verify it by checking the version of Ansible
 ```
 ---
 
-## Ansible Controller-Managed-Nodes/Master-Slave Architecture Implementation!
+## Ansible Controller Managed-Nodes/Master-Slave Architecture Implementation!
 
 ### 1. Configure Ansible & Set Up AWS Environment
   Create thee EC2 instances on AWS cloud. Ensure you have an SSH key pair to access them, assign a security group that allows SSH (port 22) and HTTP (port 80). </br>
 
-- **Controller Node**: The machine whereAnsible is installed and from where tasks are executed.</br>
+- **Controller Node**: The machine where Ansible is installed and from where tasks are executed.</br>
 - **Managed Node-1**: The machines that the controller manages and configures. This will be the first target node.</br>
-- **Slave Server 2**: This will be the second target node.</br>
+- **Managed Node-2**: This will be the second target node.</br>
 - **Configure Security Groups**: Make sure the security groups for the slave servers allow traffic from the master server, especially on SSH (port 22) and HTTP (port 80). </br>
 
 ### 2. Install and Configure Ansible on the Master Server
@@ -92,7 +92,7 @@ After the installation is complete, verify it by checking the version of Ansible
 ### 3. Set Up SSH Access to Managed Nodes
 The controller need SSH access to the managed nodes, to set this up.
 
-- **Henerate an SSH key pair on the controller**:
+- **Generate an SSH key pair on the controller**:
 
 ```
   ssh-keygen -t rsa
