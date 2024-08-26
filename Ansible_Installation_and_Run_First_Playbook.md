@@ -127,7 +127,7 @@ After the installation is complete, verify it by checking the version of Ansible
 
 ```
 
-- **Write the Playbook**:
+- **Write the Playbook (install_nginx.yml)**:
 
 ```
   ---
@@ -150,7 +150,7 @@ After the installation is complete, verify it by checking the version of Ansible
    Run the playbook to install and start nginx webserver on both slave servers.
 
 ```
-  ansible-playbook -i /etc/ansible/hosts install_nginx.yml
+  ansible-playbook -i inventory.ini install_nginx.yml
 ```
 
  ### 6. Verify the Set Up
@@ -165,11 +165,4 @@ After the installation is complete, verify it by checking the version of Ansible
 
 - **Note:- You should see the default NGINX welcome page**
 
-
-
-
-
-
-
-
-
+---
