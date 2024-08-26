@@ -54,8 +54,7 @@ After the installation is complete, verify it by checking the version of Ansible
 
 # 🚀 Ansible Controller Managed-Nodes Architecture Implementation!
 
-![Controller Managed-Node](![Ansible Logo](https://github.com/ansible/logos/blob/main/community-usage/correct-use-white.png)  
-*Ansible Controller Managed-Nodes Architecture*
+![Ansible Controller Managed-Nodes](https://media.licdn.com/dms/image/C5612AQEr8BTyXQghMw/article-cover_image-shrink_600_2000/0/1574740930541?e=2147483647&v=beta&t=0jgrEzC9Rlk_fx-IiyDlyfcxHEPWRHmWAsEZm3cSzg4)
 
 ### 1. Configure Ansible & Set Up AWS Environment
   Create thee EC2 instances on AWS cloud. Ensure you have an SSH key pair to access them, assign a security group that allows SSH (port 22) and HTTP (port 80). </br>
