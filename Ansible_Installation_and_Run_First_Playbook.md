@@ -193,27 +193,28 @@ Note: When you create EC2 instance on AWS, you have created ansible-master-key.p
 - **Write the Playbook (install_nginx.yml)**:
 
 ```
-  ---
-  -  name: This playbook will install nginx
-     hosts: servers
-     become: yes  # to use sudo
-     tasks:
-       - name: install nginx
-         apt: 
-           name: nginx
-           state: latest
-       - name: start and enable nginx service
-         service:
-           name: nginx
-           state: started
-           enabled: yes
+---
+- name: This playbook will install nginx
+  hosts: servers
+  become: yes  # to use sudo
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: latest
+
+    - name: Start and enable nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
 ```
 
  - **Run the Ansible Playbook**:
    Run the playbook to install and start nginx webserver on both slave servers.
 
 ```
-  ansible-playbook -i inventory.ini install_nginx.yml
+  ansible-playbook -i /etc/ansible/hosts install_nginx.yml
 ```
 
  ### 5. Verify the Set Up
