@@ -57,19 +57,19 @@ After the installation is complete, verify it by checking the version of Ansible
 ![Ansible Controller Managed-Nodes](https://raw.githubusercontent.com/Skchoudhary/blog-asset/master/dgplug-blog/ansible-arch.png)
 
 ### 1. Configure Ansible & Set Up AWS Environment
-  Create thee EC2 instances on AWS cloud. Ensure you have an SSH key pair to access them, assign a security group that allows SSH (port 22) and HTTP (port 80). </br>
+  Create three EC2 instances on AWS cloud. Ensure you have an SSH key pair to access them, assign a security group that allows SSH (port 22) and HTTP (port 80). </br>
 
-- **Controller Node**: The machine where Ansible is installed and from where tasks are executed.</br>
-- **Managed Node-1**: The machines that the controller manages and configures. This will be the first target node.</br>
+- **Controller Node**: The machine where Ansible is installed and from where tasks are executed.</br></br>
+- **Managed Node-1**: The machines that the controller manages and configures. This will be the first target node.</br></br>
 - **Managed Node-2**: This will be the second target node.</br>
-- **Configure Security Groups**: Make sure the security groups for the slave servers allow traffic from the master server, especially on SSH (port 22) and HTTP (port 80). </br>
+- **Configure Security Groups**: Make sure the security groups for the slave servers allow traffic from the master server, especially on SSH (port 22) and HTTP (port 80).</br></br>
 
 ### 2. Install and Configure Ansible on the Master Server
 
 - **SSH into the Master Server**:
 
 ```
-  ssh –I “master-key-pair.pem” ubuntu@ec2-52-15-176-134.us-east-2.compute.amazonaws.com
+ ssh -i "ansible-master-key.pem" ubuntu@ec2-18-219-133-17.us-east-2.compute.amazonaws.com
 ```
 
 - **Update the System**:
@@ -91,31 +91,34 @@ After the installation is complete, verify it by checking the version of Ansible
   ansible --version
 ```
 
-### 3. Set Up SSH Access to Managed Nodes
-The controller need SSH access to the managed nodes, to set this up.
-
-- **Generate an SSH key pair on the controller**:
+- **Create a keys directory inside .ssh**:
 
 ```
-  ssh-keygen -t rsa
+  mkdir /home/ubuntu/keys
+  cd keys
 ```
 
-- **Copy the public key to each managed node**:
-  Copy the public SSH key from the controller(master) to both managed nodes(slave).
+- **Copy "ansible-master-key.pem" file to Controller to SSH into Managed Nodes**
+
+Note: When you create EC2 instance on AWS, you have created ansible-master-key.pem file, so you need to copy this .pem file to controller node for SSH connectivity to the managed nodes.
 
 ```
-  ssh-copy-id user@managed-node-ip
+  scp -i "ansible-master-key.pem" ansible-master-key.pem ubuntu@ec2-52-15-176-134.us-east-2.compute.amazonaws.com:/home/ubuntu/keys/
 ```
 
- - **Test SSH Connectivity**:
-   Ensure you can SSH into both managed node from the controller without needing a password.
+- **Run the following command to change the permissions:**:
 
 ```
-  ssh user@managed-node-ip #or
-  ansible all -m ping
+  chmod 400 /home/ubuntu/keys/ansible-master-key.pem
 ```
 
- ### 4. Set Up Ansible Inventory
+- **Verify the permissions to ensure they have been set correctly:**
+
+```
+  ls -l /home/ubuntu/keys/ansible-master-key.pem
+```
+
+ ### 3. Set Up Ansible Inventory
 
  - **Edit Inventory File**:
   The Ansible hosts file **(/etc/ansible/hosts)** is where you define your inventory of servers.
@@ -123,23 +126,59 @@ The controller need SSH access to the managed nodes, to set this up.
 - **Open the hosts file**:
 
 ```
-  sudo nano /etc/ansible/hosts
+  sudo vim /etc/ansible/hosts
 ```
 
 - **Add your servers under a specific group**:
 
 ```
   [servers]
-  slave_server1 ansible_host=54.234.56.78
-  slave_server2 ansible_host=54.123.45.67
+  node1 ansible_host=3.142.79.205
+  node2 ansible_host=3.143.210.190
 
   [all:vars]
   ansible_python_interpreter=/usr/bin/python3
   ansible_user=ubuntu
-  ansible_ssh_private_key_file=/home/ubuntu/keys/master-key-pair.pem
+  ansible_ssh_private_key_file=/home/ubuntu/keys/ansible-master-key.pem
+
 ```
- 
- ### 5. Write an Ansible Playbook to Install NGINX
+
+- **Verify Ansible inventory list**:
+
+```
+  ansible-inventory --list
+```
+
+- **Test Connectivy**:
+  Ping all the nodes from the controller without needing a password.
+
+```
+  ansible -m ping servers
+```
+
+- **To check RAM & ROM**:
+  To check RAM & ROM in the all nodes from controller using a ad-hoc commands.
+
+```
+  ansible -a "free -h" servers # to check RAM
+  ansible -a "df -h" servers   # to check ROM
+```
+
+- **To update of all servers**:
+  If you want to update the nodes system from the controller use the below ad-hoc command.
+
+```
+  ansible -a "sudo apt-get update" servers
+```
+
+- **To check uptime of all servers**:
+  If you want to check uptime of the all nodes from the controller use the below ad-hoc command.
+
+```
+  ansible -a "uptime" server
+```
+
+ ### 4. Write an Ansible Playbook to Install NGINX
 
  - **Create the Playbook File**:
    Create a directory for your Ansible project and a playbook file.
@@ -177,14 +216,14 @@ The controller need SSH access to the managed nodes, to set this up.
   ansible-playbook -i inventory.ini install_nginx.yml
 ```
 
- ### 6. Verify the Set Up
+ ### 5. Verify the Set Up
 
  - **Check NGINX installation on Slave Servers**:
    Open your web browser and navigate to the public IP of both slave servers.
 
 ```
-  http://54.234.56.78:80
-  http://54.123.45.67:80
+  http://3.142.79.205:80
+  http://3.143.210.190:80
 ```
 
 - **Note:- You should see the default NGINX welcome page**
