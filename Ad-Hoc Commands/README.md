@@ -7,21 +7,6 @@ Ansible Ad-Hoc commands are one-liner shell commands that allow you to perform s
 ### Why use ad hoc commands?
 Ad-Hoc commands in Ansible are powerful tools for quickly performing tasks across multiple systems without the need to write and execute a full playbook. ad hoc commands are great for tasks you repeat rarely. For example, if you want to power off all the machines in your lab for Christmas vacation, you could execute a quick one-liner in Ansible without writing a playbook. </br></br>
 
-- **Quick Execution of Simple Tasks**:
-Ad-Hoc commands are perfect for performing simple, one-off tasks like checking the status of a service, rebooting a server, or copying files. They allow you to execute commands instantly without the overhead of creating and managing a playbook.
-
-- **No Need for Playbooks**:
-For straightforward tasks, creating a playbook might be overkill. Ad-Hoc commands let you execute tasks directly from the command line, saving time and effort, especially when you don't need the repeatability or complexity of a playbook.
-
-- **Immediate Scalability**:
-Ad-Hoc commands leverage Ansible's ability to target multiple hosts simultaneously, making them ideal for tasks that need to be executed quickly across a large number of systems, such as applying updates or gathering system information.
-
-- **On-Demand Operations**:
-When you need to perform a task only once or on-demand, Ad-Hoc commands are more efficient than creating a playbook. They allow for quick, ad-hoc operations without the need for persistent code.
-
-- **Ideal for Small Tasks in Large Environments**:
-In environments with many servers, performing small tasks across all of them can be tedious. Ad-Hoc commands let you manage these environments efficiently, executing small tasks across all systems from a single command.
-
 ### General Syntax of Ansible Ad-Hoc Commands?
 
 ```
@@ -38,14 +23,15 @@ In environments with many servers, performing small tasks across all of them can
 ---
 
 ### Use cases for ad hoc commands?
-#### 1. Ping all Hosts
-#### 2. Gathering Facts
-#### 3. System Reboot & Shutdown
-#### 4. Disk Management
-#### 5. System Information and Monitoring
-#### 6. Network Configuration
-#### 7. Package Management
-#### 8. File and Directory Management
-#### 9. Service Management
-#### 10. User and Group Management
+
+#### [1. Ping all Hosts](https://github.com/LondheShubham153/ansible-zero-to-hero/blob/main/Ad-Hoc%20Commands/Ping_all_Hosts.md)
+#### [2. Gathering Facts](https://github.com/LondheShubham153/ansible-zero-to-hero/blob/main/Ad-Hoc%20Commands/Gathering_Facts.md)
+#### [3. System Update & Patching](https://github.com/LondheShubham153/ansible-zero-to-hero/blob/main/Ad-Hoc%20Commands/System_Update_%26_Patching.md)
+#### [4. Disk Management](https://github.com/LondheShubham153/ansible-zero-to-hero/blob/main/Ad-Hoc%20Commands/Disk_Management.md)
+#### [5. System Information and Monitoring](https://github.com/LondheShubham153/ansible-zero-to-hero/blob/main/Ad-Hoc%20Commands/System_Information_%26_Monitoring.md)
+#### [6. Network Configuration](https://github.com/LondheShubham153/ansible-zero-to-hero/blob/main/Ad-Hoc%20Commands/Network_Configuration.md)
+#### [7. Package Management](https://github.com/LondheShubham153/ansible-zero-to-hero/blob/main/Ad-Hoc%20Commands/Package_Management.md)
+#### [8. File and Directory Management](https://github.com/LondheShubham153/ansible-zero-to-hero/blob/main/Ad-Hoc%20Commands/File_%26_Directory_Management.md)
+#### [9. Service Management](https://github.com/LondheShubham153/ansible-zero-to-hero/blob/main/Ad-Hoc%20Commands/Service_Management.md)
+#### [10. User and Group Management](https://github.com/LondheShubham153/ansible-zero-to-hero/blob/main/Ad-Hoc%20Commands/User_%26_Group_Management.md)
 
