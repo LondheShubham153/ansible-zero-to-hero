@@ -1,4 +1,4 @@
-## ♂️ User & Group Management
+# ♂️ User & Group Management
 
 ### 1. Create a User
 
@@ -68,7 +68,7 @@
 
 ### 12. List all Users
 
-- **Create a Custom Script to List all Users (list_users.sh)***
+- **Create a Custom Script to List all Users (list_users.sh)**
 
 ```
   #!/bin/bash
@@ -94,7 +94,7 @@
 
 ### 13. List all Groups
 
-- **Create a Custom Script to List all Groups (list_groups.sh)***
+- **Create a Custom Script to List all Groups (list_groups.sh)**
 
 ```
   #!/bin/bash
