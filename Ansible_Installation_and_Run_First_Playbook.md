@@ -14,7 +14,10 @@ Before installing Ansible, it's essential to update your package list to ensure 
 ```
   sudo yum update -y
 ```
-
+####  Optional: Install Git and Python if needed
+```
+  sudo apt install git python-pip -y
+```
 ### 2. Install Ansible
 
 - **On Debian/Ubuntu**:
@@ -52,6 +55,11 @@ After the installation is complete, verify it by checking the version of Ansible
 ```
 ---
 
+For more detailed installation instructions, please refer to the official Ansible documentation:
+
+[Ansible Community Documentation](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
+
+=======
 # 🚀 Ansible Controller Managed-Nodes Architecture Implementation!
 
 ![Ansible Controller Managed-Nodes](https://raw.githubusercontent.com/Skchoudhary/blog-asset/master/dgplug-blog/ansible-arch.png)
