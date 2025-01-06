@@ -27,10 +27,9 @@ Before installing Ansible, it's essential to update your package list to ensure 
 ```
 
 - **On RHEL/CentOS**:
-  On RHEL/CentOS, you can install Ansible by enabling the EPEL repository:
+  On RHEL/CentOS, you can install Ansible by using below command:
 
 ```
-  sudo yum install epel-release -y
   sudo yum install ansible -y
 ```
 
